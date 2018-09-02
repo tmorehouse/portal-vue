@@ -1,6 +1,6 @@
 # Portal Component
 
-Wrap any content that you want to render somehwere else in a `<portal>` component.
+Wrap any content that you want to render somewhere else in a `<portal>` component.
 
 ## Example usage
 
@@ -23,6 +23,7 @@ Wrap any content that you want to render somehwere else in a `<portal>` componen
 When `true`, the slot content will _not_ be send through the portal to the defined PortalTarget.
 
 Instead, it will be rendered in place:
+
 **Source**
 
 ```html
@@ -49,7 +50,7 @@ Instead, it will be rendered in place:
 | -------- | -------- | --------------- |
 | `String` | no       | a random String |
 
-This optional prop can usually be left out, because `Portal` can generate a random string to provide a identifier for the source of the content being sent to the `PortalTarget`.
+This optional prop can usually be left out, because `Portal` can generate a random string to provide an identifier for the source of the content being sent to the `PortalTarget`.
 
 But it might be a good idea to name your `Portal` components so you can debug them easier if need would be.
 
@@ -61,7 +62,7 @@ But it might be a good idea to name your `Portal` components so you can debug th
 | ----------------- | -------- | --------------- |
 | `[String,Number]` | no\*     | a random String |
 
-This prop defines the order position in the outupt of the `PortalTarget`.
+This prop defines the order position in the output of the `PortalTarget`.
 
 <p class="tip">
   This prop is only useful when the Portal is sending content to a `PortalTarget` which has the `multiple` prop set.
@@ -83,7 +84,7 @@ This prop defines the order position in the outupt of the `PortalTarget`.
 **Result**
 
 ```html
-<div clas="vue-portal-target">
+<div class="vue-portal-target">
   <p>some other content</p>
   <p>some content</p>
 </div>
@@ -95,7 +96,7 @@ This prop defines the order position in the outupt of the `PortalTarget`.
 | --------- | -------- | ------- |
 | `Boolean` | no       | `false` |
 
-When set to true, the component will check if the sent content has only one root node. If that is the case, the component will _not_ render a root node of its own but instead just output the conent as-is.
+When set to true, the component will check if the sent content has only one root node. If that is the case, the component will _not_ render a root node of its own but instead just output the content as-is.
 
 <p class="tip">This prop only has an effect when the 'disabled' prop is set as well</p>
 
@@ -123,8 +124,8 @@ When set to true, the component will check if the sent content has only one root
 
 This prop is only useful if:
 
-* the `disabled` prop is `true`, **and**
-* the `Portal`'s slot content is a [Scoped Slot](https://vuejs.org/v2/guide/components.html#Scoped-Slots).
+- the `disabled` prop is `true`, **and**
+- the `Portal`'s slot content is a [Scoped Slot](https://vuejs.org/v2/guide/components.html#Scoped-Slots).
 
 If that's the case, then the object you pass to `slotProps` is used to define the props that are passed to the scoped slot to display the content correctly in-place:
 
@@ -174,6 +175,34 @@ Defines the type of tag that should be rendered as a root element.
 </span>
 ```
 
+### `targetClass`
+
+| Type     | Required | Default |
+| -------- | -------- | ------- |
+| `String` | no       | none    |
+
+Accepts a string containing a list of classes. These classes will be applied to the root element of the `PortalTarget`.
+
+**Source**
+
+```html
+<portal to="destination" target-class="class1 class2">
+  <p>some content</p>
+</portal>
+
+<portal-target name="destination"></portal-target>
+```
+
+**Result**
+
+```html
+<div class="vue-portal"></div>
+
+<div class="vue-portal-target class1 class2"
+  <p>some content</p>
+</div>
+```
+
 ### `targetEl`
 
 | Type                    | Required | Default |
@@ -185,8 +214,8 @@ Defines the type of tag that should be rendered as a root element.
 </p>
 
 <p class="warning">
-  <strong>Depracation Warning</strong><br>
-  This feature will be removed in PortalVue 2.0. See [this issue](https://github.com/LinusBorg/portal-vue/issues/74).
+  <strong>Warning</strong><br>
+  This feature might change in PortalVue 2.0. It's not clear at the moment if those changes will be breaking or not. See [this issue](https://github.com/LinusBorg/portal-vue/issues/74).
 </p>
 
 Defines the name of the `Portal` component that the slot contents should be sent to. This mounts a new instance of the

@@ -34,10 +34,6 @@ See it in action in this fiddle:
 Install Package:
 
 ```bash
-// current beta: 1.3.0-beta.0
-npm install --save portal-vue@next
-
-//stable 1.2.2:
 npm install --save portal-vue
 
 # or with yarn
@@ -74,7 +70,7 @@ see the <a href="#" router-link="/docs/installation">Installation</a> page in th
 <portal to="destination" v-if="usePortal">
   <ul>
     <li>
-      When 'userPortal' evaluates to 'true', the portal's slot content will be rendered
+      When 'usePortal' evaluates to 'true', the portal's slot content will be rendered
       at the destination.
     </li>
     <li>
@@ -109,10 +105,10 @@ The order the content is rendered in can be adjusted through the `order` prop on
 **Source**
 
 ```html
-<portal name="destination" :order="2">
+<portal to="destination" :order="2">
   <p>some content</p>
 </portal>
-<portal name="destination" :order="1">
+<portal to="destination" :order="1">
   <p>some other content</p>
 </portal>
 
@@ -122,7 +118,7 @@ The order the content is rendered in can be adjusted through the `order` prop on
 **Result**
 
 ```html
-<div clas="vue-portal-target">
+<div class="vue-portal-target">
   <p>some other content</p>
   <p>some content</p>
 </div>
@@ -130,7 +126,7 @@ The order the content is rendered in can be adjusted through the `order` prop on
 
 ### Removing the Wrapper element
 
-Vue components always need a single root element. Since `<portal-target>` can't know in advance weither or not it will receive content with more than one root element, it will ender a wrapper element around the content to provide a single root node.
+Vue components always need a single root element. Since `<portal-target>` can't know in advance weither or not it will receive content with more than one root element, it will render a wrapper element around the content to provide a single root node.
 
 However, if you know that you will send content with a single root element only, you can use the `slim` prop to tell `<portal-target>` to render that element only and do without the wrapper element.
 
@@ -207,7 +203,7 @@ One important behaviour to know is this:
 ### Rendering outside of the Vue-App
 
 <p class="warning">
-  <strong>Depracation Warning</strong><br>
+  <strong>Deprecation Warning</strong><br>
   This feature will be removed in PortalVue 2.0. See [this issue](https://github.com/LinusBorg/portal-vue/issues/74).
 </p>
 
@@ -264,7 +260,7 @@ Now you can position your components with `position: absolute` instead
 
 If you use Vue for small bits and pieces on your website, but want to render something in a location at the other end of the page, PortalVue got you covered.
 
-### Tell us about your usecase!
+### Tell us about your use case!
 
 We're sure you will find use cases beyond the ones we mentioned. If you do, please
 let us know by opening an issue on <a href="http://github.com/linusborg/portal-vue">Github</a>
